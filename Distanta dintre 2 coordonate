@@ -28,18 +28,23 @@ namespace HartaAplicatie
 
             return dist;
         }
+        public static double puncte(double distanta,int tipTransport)
+        {
+            return distanta / tipTransport;
+        }
         static void Main(string[] args)
         {
-            double distanta = DistanceBetweenPlaces(25.601196, 45.6579, 25.601196, 45.657974);
+            int tipTransport = 10;//0 pentru masina, 2 pentru autobuz, 5 pentru bicicleta, 10 pentru mers pe jos
+            double distanta = DistanceBetweenPlaces(25.601196, 45.65, 25.601, 45.7);
             distanta = Math.Round(distanta, 3);
             if (distanta < 1)
             {
                 distanta = distanta * 1000;
-                Console.WriteLine("Mai sunt " + distanta+ " metri pana la destinatie.");
+                Console.WriteLine("Mai sunt " + distanta+ " metri pana la destinatie."+"Ai reusit sa acumulezi "+ puncte(distanta/100, tipTransport)+" puncte.");
             }
             else
             {
-                Console.WriteLine(distanta);
+                Console.WriteLine("Mai sunt " + distanta + " kilometri pana la destinatie." + "Ai reusit sa acumulezi " + puncte(distanta*100, tipTransport) + " puncte.");
             }
         }
     }
